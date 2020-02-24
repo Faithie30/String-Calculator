@@ -1,24 +1,30 @@
-import re
+import re 
 
-def add(nums):
-     if len(nums)==0:
+def add(numbers):
+   
+    if len(numbers) == 0:
         return 0
-     else:
-       
-       # num_list = re.split('; |, |\n|,|4|,|/|,|;|',nums)
-        #num_list = list(filter(None, num_list))
-        num_list = re.findall(r"\d+|-\d+", nums)
 
-        sum=0
-        print(num_list)
-        for number in num_list:
-            if int(number)<=1000:
-                if int(number) < 0:
-                    raise Exception("ERROR: negatives not allowed -1,-2")
-                number = int(number)
-                sum +=  number
-            #print(i)
-        return sum
+    nums = re.findall(r"\d+|-\d+", numbers)
+    sum = 0
+    negatives = []
+    for num in nums:
+        num = int(num)
+        if num < 0:
+            negatives.append(num)
+        if num <= 1000:
+            sum = sum + int(num)
+               
+    if len(negatives) > 0:
+        message = "negatives not allowed! "
+        for i in range(len(negatives)):
+            if i != len(negatives)-1:
+                message += str(negatives[i]) + ", "
+            else:
+                message += str(negatives[i]) + "."
+        raise Exception(message)
+
+    return sum
 
 
 
