@@ -1,5 +1,5 @@
 import pytest
-from string_calculator import *
+from calculator import *
 
 #Test an empty string
 def test_add_empty_str():
